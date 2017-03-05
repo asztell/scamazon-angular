@@ -5,17 +5,16 @@
                 {{ pageTitle }}
             </div>
             <div class="panel-body">
-                <form action="">
-                    <div class="form-group">
-                        <label for="filter-by">Filter by:</label>
-                        <div id="filter-by">
-                            <input type="text" />
-                        </div>
+                <div class="form-group">
+                    <label for="filter-by">Filter by:</label>
+                    <div id="filter-by">
+                        <input type="text"
+                            [(ngModel)]="listFilter"/>
                     </div>
-                </form>
+                </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <h3>Filtered by: </h3>
+                        <h3>Filtered by: {{ listFilter }}</h3>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -24,8 +23,9 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <button class="btn btn-primary">
-                                        Show Image
+                                    <button class="btn btn-primary"
+                                            (click)="toggleImage()">
+                                        {{ showImage ? 'Hide' : 'Show' }} Image
                                     </button>
                                 </th>
                                 <th>Product</th>
@@ -36,18 +36,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let product of products">
+                            <tr *ngFor="let product of products | productFilter:listFilter">
                                 <td>
-                                    <img [src]="product.imageUrl"
-                                         [title]="product.productName"
-                                         alt=""
+                                    <img *ngIf="showImage"
+                                        [src]="product.imageUrl"
+                                        [title]="product.productName"
+                                        alt=""
                                         [style.width.px]="imageWidth"
-                                         [style.margin.px]="imageMargin">
+                                        [style.margin.px]="imageMargin">
                                 </td>
                                 <td>{{ product.productName }}</td>
                                 <td>{{ product.productCode }}</td>
                                 <td>{{ product.releaseDate }}</td>
-                                <td>{{ product.price }}</td>
+                                <td>{{ product.price | currency:'USD':true:'1.2-2' }}</td>
                                 <td>{{ product.starRating }}</td>
                             </tr>
                         </tbody>

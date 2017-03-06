@@ -7,8 +7,8 @@
             <div class="panel-body">
                 <div class="form-group">
                     <label for="filter-by">Filter by:</label>
-                    <div id="filter-by">
-                        <input type="text"
+                    <div>
+                        <input type="text"  id="filter-by"
                             [(ngModel)]="listFilter"/>
                     </div>
                 </div>
@@ -49,7 +49,9 @@
                                 <td>{{ product.productCode }}</td>
                                 <td>{{ product.releaseDate }}</td>
                                 <td>{{ product.price | currency:'USD':true:'1.2-2' }}</td>
-                                <td>{{ product.starRating }}</td>
+                                <td>
+                                    <ai-star [rating]="product.starRating"></ai-star>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

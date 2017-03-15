@@ -35,9 +35,10 @@ __decorate([
 ], StarComponent.prototype, "ratingClicked", void 0);
 StarComponent = __decorate([
     core_1.Component({
+        moduleId: module.id,
         selector: 'ai-star',
-        templateUrl: 'app/shared/star.component.html',
-        styleUrls: ['app/shared/star.component.css']
+        templateUrl: 'star.component.html',
+        styleUrls: ['star.component.css']
     })
 ], StarComponent);
 exports.StarComponent = StarComponent;

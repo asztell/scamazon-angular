@@ -40,8 +40,8 @@ var ProductListComponent = (function () {
 }());
 ProductListComponent = __decorate([
     core_1.Component({
-        selector: 'pm-products',
         moduleId: module.id,
+        selector: 'pm-products',
         templateUrl: 'product-list.component.html'
     }),
     __metadata("design:paramtypes", [product_service_1.ProductService])
